@@ -180,9 +180,9 @@ let clothing = [
     picItem : "HOODIE"
   },
   {
-    name: "Purple Hoodie",
-    colour: "purple",
-    cssColour: "purple",
+    name: "Burgundy Hoodie",
+    colour: "red",
+    cssColour: "burgundy",
     tags: ["Casual"],
     tempEffect: 4,
     bodyPart: "torsoJumper",
@@ -630,9 +630,9 @@ let wearing = {
       console.log(this);
       iterator++;
     }
-  
+    document.getElementById('tempOutfit').innerHTML = 'Outfit Temperature: ' + this.bodyTemperature;
   },
-  addColour: function (compareItem) {
+  addColour: function (compareItem, replaceItem) {
     let iterator = 0;
     let selectedItem = null;
     while (selectedItem == null) {
@@ -645,6 +645,15 @@ let wearing = {
         if (tempItem != null) {
           if (this[tempItem.bodyPart] != null) {
             if (tempItem.tempEffect == this[tempItem.bodyPart].tempEffect) {
+              if (compareItem == null) {
+                if (replaceItem == null) {
+                selectedItem = tempItem;
+                } else {
+                  if (tempItem.bodyPart == replaceItem && tempItem.colour != this[replaceItem].colour) {
+                    selectedItem = tempItem;
+                  }
+                }
+              } else {
           if (!neutrals.includes(tempItem.colour)) {
             if (compareItem == null) {
               selectedItem = tempItem;
@@ -663,6 +672,7 @@ let wearing = {
               }
             }
           }
+        }
             }
           }
         }
@@ -775,6 +785,12 @@ function getAverage(arr) {
 
 getTemp();
 
+function swapItem(item) {
+  wearing.addColour(null,item)
+}
+
+function removeItem(item) {
+}
 
 function generateOutfit() {
   wearing.resetAll();

@@ -10,6 +10,7 @@
 <body>
 <h1>Clothes App</h1>
 <h3 id="temp">Today's Temperature: </h3>
+<h3 id="tempOutfit">Outfit Temperature: </h3>
 <select name="moodSelector" id="mood">
     <option value="Casual">Casual</option>
     <option value="Neat Casual">Neat-Casual</option>
@@ -18,13 +19,13 @@
     <option value="Trendy">Trendy</option>
   </select>
 <ul id="clothes">
-    <li id="head"></li>
-    <li id="neck"></li>
-    <li id="torsoJacket"></li>
-    <li id="torsoJumper"></li>
-    <li id="torsoShirt"></li>
-    <li id="legs"></li>
-    <li id="feet"></li>
+    <li><p id="head"></p><span><button onclick="swapItem('head')" >~</button><button onclick="removeItem('head')">X</button></span></li>
+    <li><p id="neck"></p><span><button onclick="swapItem('neck')">~</button><button onclick="removeItem('neck')">X</button></span></li>
+    <li><p id="torsoJacket"></p><span><button onclick="swapItem('torsoJacket')">~</button><button onclick="removeItem('torsoJacket')">X</button></span></li>
+    <li><p id="torsoJumper"></p><span><button onclick="swapItem('torsoJumper')">~</button><button onclick="removeItem('torsoJumper')">X</button></span></li>
+    <li><p id="torsoShirt"></p><span><button onclick="swapItem('torsoShirt')">~</button><button onclick="removeItem('torsoShirt')">X</button></span></li>
+    <li><p id="legs"></p><span><button onclick="swapItem('legs')">~</button><button onclick="removeItem('legs')">X</button></span></li>
+    <li><p id="feet"></p><span><button onclick="swapItem('feet')">~</button><button onclick="removeItem('feet')">X</button></span></li>
 </ul>
 
 <button onclick="generateOutfit()">Generate</button>
