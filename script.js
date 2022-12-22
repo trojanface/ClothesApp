@@ -153,7 +153,13 @@ let wearing = {
               } else {
           if (!neutrals.includes(tempItem.colour)) {
             if (compareItem == null) {
-              selectedItem = tempItem;
+              if (replaceItem == null) {
+                selectedItem = tempItem;
+                } else {
+                  if (tempItem.bodyPart == replaceItem && tempItem.colour != this[replaceItem].colour) {
+                    selectedItem = tempItem;
+                  }
+                }
             } else {
               for (let i = 0; i < colourCombinations.length; i++) {
                 if (
@@ -161,7 +167,13 @@ let wearing = {
                   colourCombinations[i].includes(tempItem.colour) &&
                   tempItem.colour != compareItem.colour
                 ) {
-                  selectedItem = tempItem;
+                  if (replaceItem == null) {
+                    selectedItem = tempItem;
+                    } else {
+                      if (tempItem.bodyPart == replaceItem && tempItem.colour != this[replaceItem].colour) {
+                        selectedItem = tempItem;
+                      }
+                    }
                   break;
                 }
               }
@@ -177,7 +189,13 @@ let wearing = {
             if (tempItem.tempEffect == this[tempItem.bodyPart].tempEffect) {
             if (!neutrals.includes(tempItem.colour)) {
               if (compareItem == null) {
-                selectedItem = tempItem;
+                if (replaceItem == null) {
+                  selectedItem = tempItem;
+                  } else {
+                    if (tempItem.bodyPart == replaceItem && tempItem.colour != this[replaceItem].colour) {
+                      selectedItem = tempItem;
+                    }
+                  }
               } else {
                 for (let i = 0; i < colourCombinations.length; i++) {
                   if (
@@ -191,7 +209,13 @@ let wearing = {
                         false &&
                         !badCombinations[j].includes(tempItem.colour)
                       ) {
-                        selectedItem = tempItem;
+                        if (replaceItem == null) {
+                          selectedItem = tempItem;
+                          } else {
+                            if (tempItem.bodyPart == replaceItem && tempItem.colour != this[replaceItem].colour) {
+                              selectedItem = tempItem;
+                            }
+                          }
                         break;
                       }
                     }
@@ -278,6 +302,12 @@ function swapItem(item) {
   wearing.addColour(null,item)
 }
 
+function tooHot() {
+}
+
+function tooCold() {
+}
+
 function removeItem(item) {
 }
 
@@ -290,30 +320,7 @@ function generateOutfit() {
 function addSpice() {
   wearing.addColour(wearing.addColour());
 };
-//pair varying shades of complimentary colours opposite on colour wheel or different shades of the same color for a BOLD look
-//let patterns by the focus and keep everything else muted
-//for subdued choose a cool/warm color and then other neutral colors
-//analogous color are three shades that sit next to each other with a primary or secondary color in the middle
 
-//ideal is 2-3 colors no more
-// Base color – 60-70% 2 items
-// Black
-// Grey
-// White
-// Brown
-// Navy
-// Complementary color – 20-30% 1 item
-// Accent color – 5-10% 1 item
-
-//navy+white,grey+black,green+khaki,brown+cream,brown+burgundy,grey+pink,black+white, dark blue+brown, light blue + mustard, grey +beige+light blue
-//green+brown, blue+brown+beige, light grey+red, blue+ brown+maroon, red+blue+mustard, mustard+brown+blue, red+brown, mustard+blue+rust, purple+blue+mustard
-
-//randomly select a body part
-//randomly select a clothing item
-//randomly select a body part
-//match clothing item to other clothing item
-
-
-
+//TODO
 //add a too hot button that will make the outfit cooler and a too cold button that does the opposite
 //save outfit to cookie so it persists between sessions.
