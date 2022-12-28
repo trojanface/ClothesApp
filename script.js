@@ -44,6 +44,12 @@ let wearing = {
   setTemperature: function (temp) {
     this.bodyTemperature = temp;
   },
+  removeItem: function (item) {
+    if (this[item] != null) document.getElementById(this[item].picItem).style.display = "none";
+    if (this[item] != null) document.getElementById(item).innerHTML = '';
+    if (this[item] != null) document.getElementById(item + 'Col').style.display = "none";
+    this[item] = null;
+  },
   resetAll: function() {
     this.setTemperature(todayTemp)
     let parts = document.getElementsByClassName("bodyPart");
@@ -55,7 +61,14 @@ let wearing = {
    if (this.torsoJacket != null) document.getElementById(this.torsoJacket.picItem).style.display = "none";
    if (this.torsoJumper != null) document.getElementById(this.torsoJumper.picItem).style.display = "none";
    if (this.legs != null) document.getElementById(this.legs.picItem).style.display = "none";
-   if (this.feet != null) document.getElementById(this.feet.picItem).style.display = "none";
+   if (this.feet != null) document.getElementById('feetCol').style.display = "none";
+   if (this.head != null) document.getElementById('headCol').style.display = "none";
+   if (this.neck != null) document.getElementById('neckCol').style.display = "none";
+   if (this.torsoShirt != null) document.getElementById('torsoShirtCol').style.display = "none";
+   if (this.torsoJacket != null) document.getElementById('torsoJacketCol').style.display = "none";
+   if (this.torsoJumper != null) document.getElementById('torsoJumperCol').style.display = "none";
+   if (this.legs != null) document.getElementById('legsCol').style.display = "none";
+   if (this.feet != null) document.getElementById('feetCol').style.display = "none";
     this.head = null;
     this.neck = null;
     this.torsoShirt = null;
@@ -254,11 +267,11 @@ let wearing = {
 
 const getTemp = async () => {
   const response = await fetch(
-    "https://api.open-meteo.com/v1/forecast?latitude=-35.066666&longitude=138.8500&daily=temperature_2m_max&timezone=GMT"
+    "https://api.open-meteo.com/v1/forecast?latitude=-35.066666&longitude=138.8500&daily=temperature_2m_max&timezone=Australia%2FAdelaide"
   );
   const tempMax = await response.json(); //extract JSON from the http response
   const response2 = await fetch(
-    "https://api.open-meteo.com/v1/forecast?latitude=-35.066666&longitude=138.8500&daily=temperature_2m_min&timezone=GMT"
+    "https://api.open-meteo.com/v1/forecast?latitude=-35.066666&longitude=138.8500&daily=temperature_2m_min&timezone=Australia%2FAdelaide"
   );
   const tempMin = await response2.json(); //extract JSON from the http response
   const month = new Date().getMonth();
@@ -309,6 +322,7 @@ function tooCold() {
 }
 
 function removeItem(item) {
+  wearing.removeItem(item)
 }
 
 function generateOutfit() {

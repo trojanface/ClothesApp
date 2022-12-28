@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <title>Clothes App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>What to Wear</title>
+    <script src="https://kit.fontawesome.com/690c0f0a79.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>Clothes App</h1>
-<h3 id="temp">Today's Temperature: </h3>
-<h3 id="tempOutfit">Outfit Temperature: </h3>
+    <div class="container">
+        <div class="row">
+<h1  class="text-center">What to Wear</h1>
+</div>
+<div class="row">
 <select name="moodSelector" id="mood">
     <option value="Casual">Casual</option>
     <option value="Neat Casual">Neat-Casual</option>
@@ -18,20 +22,27 @@
     <option value="Bold">Bold</option>
     <option value="Trendy">Trendy</option>
   </select>
-<ul id="clothes">
-    <li><p id="head" class="bodyPart"></p><span><button onclick="swapItem('head')" >~</button><button onclick="removeItem('head')">X</button></span></li>
-    <li><p id="neck" class="bodyPart"></p><span><button onclick="swapItem('neck')">~</button><button onclick="removeItem('neck')">X</button></span></li>
-    <li><p id="torsoJacket" class="bodyPart"></p><span><button onclick="swapItem('torsoJacket')">~</button><button onclick="removeItem('torsoJacket')">X</button></span></li>
-    <li><p id="torsoJumper" class="bodyPart"></p><span><button onclick="swapItem('torsoJumper')">~</button><button onclick="removeItem('torsoJumper')">X</button></span></li>
-    <li><p id="torsoShirt" class="bodyPart"></p><span><button onclick="swapItem('torsoShirt')">~</button><button onclick="removeItem('torsoShirt')">X</button></span></li>
-    <li><p id="legs" class="bodyPart"></p><span><button onclick="swapItem('legs')">~</button><button onclick="removeItem('legs')">X</button></span></li>
-    <li><p id="feet" class="bodyPart"></p><span><button onclick="swapItem('feet')">~</button><button onclick="removeItem('feet')">X</button></span></li>
-</ul>
+  </div>
 
-<button onclick="generateOutfit()">Generate</button>
-<button onclick="addSpice()">Add Spice</button>
-<button onclick="tooHot()">Too Hot</button>
-<button onclick="tooCold()">Too Cold</button>
+  <div class="row">
+  <h3 id="temp">Today's Temperature: </h3>
+<h3 id="tempOutfit">Outfit Temperature: </h3>
+</div>
+<div class="row">
+        <div id="headCol" class="col-6"><p id="head" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('head')" ><i class="fas fa-random"></i></button><button type="button" class="btn btn-info "onclick="removeItem('head')"><i class="fas fa-trash"></i></button></span></div>
+        <div id="neckCol" class="col-6"><p id="neck" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('neck')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info"onclick="removeItem('neck')"><i class="fas fa-trash"></i></button></span></div>
+        <div id="torsoJacketCol" class="col-6"><p id="torsoJacket" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('torsoJacket')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info"onclick="removeItem('torsoJacket')"><i class="fas fa-trash"></i></button></span></div>
+        <div id="torsoJumperCol" class="col-6"><p id="torsoJumper" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('torsoJumper')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info"onclick="removeItem('torsoJumper')"><i class="fas fa-trash"></i></button></span></div>
+        <div id="torsoShirtCol" class="col-6"><p id="torsoShirt" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('torsoShirt')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info"onclick="removeItem('torsoShirt')"><i class="fas fa-trash"></i></button></span></div>
+        <div id="legsCol" class="col-6"><p id="legs" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('legs')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info"onclick="removeItem('legs')"><i class="fas fa-trash"></i></button></span></div>
+        <div id="feetCol" class="col-6"><p id="feet" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('feet')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info"onclick="removeItem('feet')"><i class="fas fa-trash"></i></button></span></div>
+</div>
+<div class="row">
+<button class="col-3" onclick="generateOutfit()">Generate</button>
+<button class="col-3" onclick="addSpice()">Add Spice</button>
+<button class="col-3" onclick="tooHot()">Too Hot</button>
+<button class="col-3" onclick="tooCold()">Too Cold</button>
+</div>
 <div class="body">
     <img src="./body.png" style="position: absolute;">
     <!--THONGS-->
@@ -330,7 +341,9 @@
         </g>
         </svg>
 </div>
+</div>
 </body>
+
 <script  src="library.js"></script>
 <script  src="script.js"></script>
 </html>
