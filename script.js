@@ -1,5 +1,6 @@
 let todayTemp = 0;
 let defaultTemperature = 22;
+let tempOffset = 0;
 const neutrals = ["black", "gray", "white", "blue"];
 let colourCombinations = [
   ["blue", "white"],
@@ -129,18 +130,20 @@ let wearing = {
         this.setTemperature(this.bodyTemperature -= this[selectedItem.bodyPart].tempEffect);
         if (this[selectedItem.bodyPart].hasOwnProperty("picItem")) {
           document.getElementById(this[selectedItem.bodyPart].picItem).style.display = "none";
+          document.getElementById(selectedItem.bodyPart + 'Col').style.display = "none";
         }
       }
       this[selectedItem.bodyPart] = selectedItem;
       if (selectedItem.hasOwnProperty("picItem")) {
         document.getElementById(selectedItem.picItem).style.display = "block";
+        document.getElementById(selectedItem.bodyPart + 'Col').style.display = "block";
         document.getElementById(selectedItem.picItem).style.fill = selectedItem.cssColour;
       }
       this.updateGUI(selectedItem.bodyPart,selectedItem.name)
       this.setTemperature(this.bodyTemperature + selectedItem.tempEffect);
       iterator++;
     }
-    document.getElementById('tempOutfit').innerHTML = 'Outfit Temperature: ' + this.bodyTemperature;
+    document.getElementById('tempOutfit').innerHTML = 'Outfit Temperature: ' + this.bodyTemperature + '\u00B0c';
   },
   addColour: function (compareItem, replaceItem) {
     let iterator = 0;
@@ -249,11 +252,13 @@ let wearing = {
       if (this[selectedItem.bodyPart] != null) {
       if (this[selectedItem.bodyPart].hasOwnProperty("picItem")) {
         document.getElementById(this[selectedItem.bodyPart].picItem).style.display = "none";
+        document.getElementById(selectedItem.bodyPart + 'Col').style.display = "none";
       }
     }
     this[selectedItem.bodyPart] = selectedItem;
     if (selectedItem.hasOwnProperty("picItem")) {
       document.getElementById(selectedItem.picItem).style.display = "block";
+      document.getElementById(selectedItem.bodyPart + 'Col').style.display = "block";
       document.getElementById(selectedItem.picItem).style.fill = selectedItem.cssColour;
     }
     this.updateGUI(selectedItem.bodyPart,selectedItem.name)
@@ -280,23 +285,26 @@ const getTemp = async () => {
       case(1):
       case(2):
       case(11):
-    todayTemp = tempMax.daily.temperature_2m_max[1]
+    todayTemp = tempMax.daily.temperature_2m_max[1]+tempOffset
     break;
       case(5):
       case(6):
       case(7):
-      todayTemp = tempMin.daily.temperature_2m_min[1]
+      todayTemp = tempMin.daily.temperature_2m_min[1]+tempOffset
     break;
     default:
     todayTemp = Math.round(
       (tempMax.daily.temperature_2m_max[1] + tempMin.daily.temperature_2m_min[1]) / 2
-    );
+    )+tempOffset;
     break;
   }
   //todayTemp=31
   document.getElementById(
     "temp"
   ).innerHTML = `Today's Temperature: ${todayTemp}\u00B0c`;
+  document.getElementById(
+    "targetTemp"
+  ).innerHTML = `Offset: ${tempOffset}\u00B0c`;
   wearing.setTemperature(todayTemp);
   wearing.createNeutralBase();
   wearing.addColour(wearing.addColour());
@@ -316,9 +324,23 @@ function swapItem(item) {
 }
 
 function tooHot() {
+  todayTemp += 1;
+  tempOffset += 1;
+  document.getElementById(
+    "targetTemp"
+  ).innerHTML = `Offset: ${tempOffset}\u00B0c`;
+  wearing.setTemperature(todayTemp);
+  console.log(todayTemp)
 }
 
 function tooCold() {
+  todayTemp -= 1;
+  tempOffset -= 1;
+  document.getElementById(
+    "targetTemp"
+  ).innerHTML = `Offset: ${tempOffset}\u00B0c`;
+  wearing.setTemperature(todayTemp);
+  console.log(todayTemp)
 }
 
 function removeItem(item) {

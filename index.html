@@ -12,8 +12,9 @@
 <body>
     <div class="container">
         <div class="row">
-<h1  class="text-center">What to Wear</h1>
+<h1 id="titleText" class="text-center">What to Wear</h1>
 </div>
+<br>
 <div class="row">
 <select name="moodSelector" id="mood">
     <option value="Casual">Casual</option>
@@ -23,30 +24,35 @@
     <option value="Trendy">Trendy</option>
   </select>
   </div>
-
+  <br>
   <div class="row">
-  <h3 id="temp">Today's Temperature: </h3>
-<h3 id="tempOutfit">Outfit Temperature: </h3>
+  <h5 id="temp">Today's Temperature: </h5>
+  <h5 id="targetTemp">Target Temperature: </h5>
+<h5 id="tempOutfit">Outfit Temperature: </h5>
 </div>
+<br>
 <div class="row">
-        <div id="headCol" class="col-6"><p id="head" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('head')" ><i class="fas fa-random"></i></button><button type="button" class="btn btn-info "onclick="removeItem('head')"><i class="fas fa-trash"></i></button></span></div>
-        <div id="neckCol" class="col-6"><p id="neck" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('neck')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info"onclick="removeItem('neck')"><i class="fas fa-trash"></i></button></span></div>
-        <div id="torsoJacketCol" class="col-6"><p id="torsoJacket" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('torsoJacket')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info"onclick="removeItem('torsoJacket')"><i class="fas fa-trash"></i></button></span></div>
-        <div id="torsoJumperCol" class="col-6"><p id="torsoJumper" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('torsoJumper')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info"onclick="removeItem('torsoJumper')"><i class="fas fa-trash"></i></button></span></div>
-        <div id="torsoShirtCol" class="col-6"><p id="torsoShirt" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('torsoShirt')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info"onclick="removeItem('torsoShirt')"><i class="fas fa-trash"></i></button></span></div>
-        <div id="legsCol" class="col-6"><p id="legs" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('legs')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info"onclick="removeItem('legs')"><i class="fas fa-trash"></i></button></span></div>
-        <div id="feetCol" class="col-6"><p id="feet" class="bodyPart"></p><span><button type="button" class="btn btn-info" onclick="swapItem('feet')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info"onclick="removeItem('feet')"><i class="fas fa-trash"></i></button></span></div>
+        <div id="headCol" class="col-6 bodyItemList text-center"><p id="head" class="bodyPart"></p><button type="button" class="btn btn-info btn-sm" onclick="swapItem('head')" ><i class="fas fa-random"></i></button><button type="button" class="btn btn-info btn-sm"onclick="removeItem('head')"><i class="fas fa-trash"></i></button></div>
+        <div id="neckCol" class="col-6 bodyItemList text-center"><p id="neck" class="bodyPart"></p><button type="button" class="btn btn-info btn-sm" onclick="swapItem('neck')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info btn-sm"onclick="removeItem('neck')"><i class="fas fa-trash"></i></button></div>
+        <div id="torsoJacketCol" class="col-6 bodyItemList text-center"><p id="torsoJacket" class="bodyPart"></p><button type="button" class="btn btn-info btn-sm" onclick="swapItem('torsoJacket')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info btn-sm"onclick="removeItem('torsoJacket')"><i class="fas fa-trash"></i></button></div>
+        <div id="torsoJumperCol" class="col-6 bodyItemList text-center"><p id="torsoJumper" class="bodyPart"></p><button type="button" class="btn btn-info btn-sm" onclick="swapItem('torsoJumper')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info btn-sm"onclick="removeItem('torsoJumper')"><i class="fas fa-trash"></i></button></div>
+        <div id="torsoShirtCol" class="col-6 bodyItemList text-center"><p id="torsoShirt" class="bodyPart"></p><button type="button" class="btn btn-info btn-sm" onclick="swapItem('torsoShirt')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info btn-sm"onclick="removeItem('torsoShirt')"><i class="fas fa-trash"></i></button></div>
+        <div id="legsCol" class="col-6 bodyItemList text-center"><p id="legs" class="bodyPart"></p><button type="button" class="btn btn-info btn-sm" onclick="swapItem('legs')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info btn-sm"onclick="removeItem('legs')"><i class="fas fa-trash"></i></button></div>
+        <div id="feetCol" class="col-6 bodyItemList text-center"><p id="feet" class="bodyPart"></p><button type="button" class="btn btn-info btn-sm" onclick="swapItem('feet')"><i class="fas fa-random"></i></button><button type="button" class="btn btn-info btn-sm"onclick="removeItem('feet')"><i class="fas fa-trash"></i></button></div>
 </div>
+<br>
 <div class="row">
-<button class="col-3" onclick="generateOutfit()">Generate</button>
-<button class="col-3" onclick="addSpice()">Add Spice</button>
-<button class="col-3" onclick="tooHot()">Too Hot</button>
-<button class="col-3" onclick="tooCold()">Too Cold</button>
+    <div  class="col-md-12 text-center">
+        <button class="btn btn-success" onclick="generateOutfit()">Generate</button>
+        <button class="btn btn-warning" onclick="addSpice()">Spice</button>
+        <button class="btn btn-info" onclick="tooHot()">Colder</button>
+        <button class="btn btn-info" onclick="tooCold()">Warmer</button>
+    </div>
 </div>
 <div class="body">
-    <img src="./body.png" style="position: absolute;">
+    <img src="./body.png" style="position: absolute; width: 95vw;">
     <!--THONGS-->
-    <svg id="THONGS" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="THONGS" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -66,7 +72,7 @@
         </g>
         </svg>
     <!--LOWTOPS-->
-    <svg id="LOWTOPS" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="LOWTOPS" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -81,7 +87,7 @@
         </g>
         </svg>
     <!--HIGHTOPS-->
-    <svg id="HIGHTOPS" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="HIGHTOPS" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -96,7 +102,7 @@
         </g>
         </svg>
     <!--SHORTS-->
-    <svg id="SHORTS" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="SHORTS" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -109,7 +115,7 @@
         </g>
         </svg>
     <!--PANTS-->
-    <svg id="PANTS" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="PANTS" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -123,7 +129,7 @@
         </g>
         </svg>
     <!--SINGLET-->
-    <svg id="SINGLET" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="SINGLET" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -138,7 +144,7 @@
         </g>
         </svg>
     <!--TSHIRT-->
-    <svg id="TSHIRT" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="TSHIRT" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -156,7 +162,7 @@
         </g>
         </svg>
         <!--POLO-->
-        <svg id="POLO" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+        <svg id="POLO" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
             <metadata>
             Created by potrace 1.12, written by Peter Selinger 2001-2015
             </metadata>
@@ -173,7 +179,7 @@
             </g>
             </svg>
     <!--LONGSLEEVE SHIRT-->
-    <svg id="LONGSLEEVE_SHIRT" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="LONGSLEEVE_SHIRT" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -192,7 +198,7 @@
         </g>
         </svg>
         <!--SWEATER-->
-        <svg id="SWEATER" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+        <svg id="SWEATER" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
             <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -211,7 +217,7 @@
         </g>
         </svg>
     <!--SHIRT-->
-    <svg id="SHIRT" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="SHIRT" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -230,7 +236,7 @@
         </g>
         </svg>
     <!--TIE-->
-    <svg id="TIE" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="TIE" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -238,7 +244,7 @@
         </g>
         </svg>
         <!--HOODIEVEST-->
-        <svg id="HOODIEVEST" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+        <svg id="HOODIEVEST" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
             <metadata>
             Created by potrace 1.12, written by Peter Selinger 2001-2015
             </metadata>
@@ -257,7 +263,7 @@
             </g>
             </svg>
     <!--HOODIE-->
-    <svg id="HOODIE" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="HOODIE" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -280,7 +286,7 @@
         </g>
         </svg>
     <!--JACKET-->
-    <svg id="JACKET" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="JACKET" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -300,7 +306,7 @@
         </g>
         </svg>
     <!--SCARF-->
-    <svg id="SCARF" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="SCARF" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -317,7 +323,7 @@
         </g>
         </svg>
     <!--GLASSES-->
-    <svg id="GLASSES" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="GLASSES" version="1.0" fill="red" style="position:absolute; display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
@@ -330,7 +336,7 @@
         </g>
         </svg>
     <!--BEANIE-->
-    <svg id="BEANIE" version="1.0" fill="red" style="position:absolute;  display:none" xmlns="http://www.w3.org/2000/svg" width="500.000000px" height="528.000000px" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
+    <svg id="BEANIE" version="1.0" fill="red" style="position:absolute;  display:none" xmlns="http://www.w3.org/2000/svg" width="95vw" height="100vw" viewBox="0 0 700.000000 739.000000" preserveAspectRatio="xMidYMid meet">
         <metadata>
         Created by potrace 1.12, written by Peter Selinger 2001-2015
         </metadata>
