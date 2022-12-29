@@ -2,6 +2,7 @@ body {
     background-image: url("https://cdn.freebiesbug.com/wp-content/uploads/2012/10/blueprint-pattern-psd-pat-580x300.jpg");
     background-repeat: repeat;
     color: white;
+    background-attachment: fixed;
 }
 .bodyItemList {
 display: none;

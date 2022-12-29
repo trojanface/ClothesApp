@@ -51,32 +51,37 @@ let wearing = {
     if (this[item] != null) document.getElementById(item + 'Col').style.display = "none";
     this[item] = null;
   },
+  loadItems: function(user_data) {
+    this.bodyTemperature = user_data.bodyTemperature;
+    let loopItems = ['head','neck','torsoShirt','torsoJacket','torsoJumper','legs','feet']
+    for (i in loopItems) {
+      this[loopItems[i]]=user_data[loopItems[i]];
+      if (this[loopItems[i]] != null) {
+        document.getElementById(this[loopItems[i]].picItem).style.display = "block";
+        document.getElementById(loopItems[i] + 'Col').style.display = "block";
+        document.getElementById(this[loopItems[i]].picItem).style.fill = this[loopItems[i]].cssColour;
+        document.getElementById(loopItems[i]).innerHTML = this[[loopItems[i]]].name;
+      }
+    }
+ 
+  },
   resetAll: function() {
     this.setTemperature(todayTemp)
     let parts = document.getElementsByClassName("bodyPart");
     parts = Array.from(parts)
     parts.map((element) => { element.innerHTML=''})
-   if (this.head != null) document.getElementById(this.head.picItem).style.display = "none";
-   if (this.neck != null) document.getElementById(this.neck.picItem).style.display = "none";
-   if (this.torsoShirt != null) document.getElementById(this.torsoShirt.picItem).style.display = "none";
-   if (this.torsoJacket != null) document.getElementById(this.torsoJacket.picItem).style.display = "none";
-   if (this.torsoJumper != null) document.getElementById(this.torsoJumper.picItem).style.display = "none";
-   if (this.legs != null) document.getElementById(this.legs.picItem).style.display = "none";
-   if (this.feet != null) document.getElementById('feetCol').style.display = "none";
-   if (this.head != null) document.getElementById('headCol').style.display = "none";
-   if (this.neck != null) document.getElementById('neckCol').style.display = "none";
-   if (this.torsoShirt != null) document.getElementById('torsoShirtCol').style.display = "none";
-   if (this.torsoJacket != null) document.getElementById('torsoJacketCol').style.display = "none";
-   if (this.torsoJumper != null) document.getElementById('torsoJumperCol').style.display = "none";
-   if (this.legs != null) document.getElementById('legsCol').style.display = "none";
-   if (this.feet != null) document.getElementById('feetCol').style.display = "none";
-    this.head = null;
-    this.neck = null;
-    this.torsoShirt = null;
-    this.torsoJacket = null;
-    this.torsoJumper = null;
-    this.legs = null;
-    this.feet = null;
+    let loopItems = ['head','neck','torsoShirt','torsoJacket','torsoJumper','legs','feet']
+    for (i in loopItems) {
+      if (this[loopItems[i]] != null) {
+        if (this.head != null) {
+          document.getElementById(this[loopItems[i]].picItem).style.display = "none";
+          if (this.head != null) document.getElementById('headCol').style.display = "none";
+        }
+        document.getElementById(this[loopItems[i]].picItem).style.display = "block";
+        document.getElementById(loopItems[i] + 'Col').style.display = "block";
+      }
+      this[loopItems[i]]=null;
+    }
   },
   fashionRules: function(tempItem) {
     let mood = document.getElementById("mood").value
@@ -267,6 +272,17 @@ let wearing = {
   }},
   updateGUI : function (bodyPart,clothing) {
     var li = document.getElementById(bodyPart).innerHTML = clothing;
+    var user = {
+      head: wearing.head,
+      neck: wearing.neck,
+      torsoShirt: wearing.torsoShirt,
+      torsoJacket: wearing.torsoJacket,
+      torsoJumper: wearing.torsoJumper,
+      legs: wearing.legs,
+      feet: wearing.feet,
+      bodyTemperature: wearing.bodyTemperature,
+    };
+    window.localStorage.setItem('user_data', JSON.stringify(user));
   }
 };
 
@@ -306,8 +322,14 @@ const getTemp = async () => {
     "targetTemp"
   ).innerHTML = `Offset: ${tempOffset}\u00B0c`;
   wearing.setTemperature(todayTemp);
+
+  let user = JSON.parse(window.localStorage.getItem('user_data'));
+    if (user != null) {
+      wearing.loadItems(user);
+    } else {
   wearing.createNeutralBase();
   wearing.addColour(wearing.addColour());
+    }
 };
 function getAverage(arr) {
   let sum = 0;
@@ -357,6 +379,3 @@ function addSpice() {
   wearing.addColour(wearing.addColour());
 };
 
-//TODO
-//add a too hot button that will make the outfit cooler and a too cold button that does the opposite
-//save outfit to cookie so it persists between sessions.
