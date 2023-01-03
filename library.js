@@ -1,3 +1,4 @@
+//Add new clothes here.
 const clothing = [
     {
       name: "Navy Wife Beater",

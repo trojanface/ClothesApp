@@ -1,8 +1,8 @@
 let todayTemp = 0;
-let defaultTemperature = 22;
+let defaultTemperature = 22; //Adjust this temperature if the recommended clothing doesn't suit the weather well
 let tempOffset = 0;
 const neutrals = ["black", "gray", "white", "blue"];
-let colourCombinations = [
+let colourCombinations = [//well coordinated colors
   ["blue", "white"],
   ["gray", "black"],
   ["brown", "white"],
@@ -33,7 +33,7 @@ let badCombinations = [
   ['brown','black'],
   ['purple','yellow']
 ]
-let wearing = {
+let wearing = {//the outfit object
   head: null,
   neck: null,
   torsoShirt: null,
@@ -73,12 +73,8 @@ let wearing = {
     let loopItems = ['head','neck','torsoShirt','torsoJacket','torsoJumper','legs','feet']
     for (i in loopItems) {
       if (this[loopItems[i]] != null) {
-        if (this.head != null) {
-          document.getElementById(this[loopItems[i]].picItem).style.display = "none";
-          if (this.head != null) document.getElementById('headCol').style.display = "none";
-        }
-        document.getElementById(this[loopItems[i]].picItem).style.display = "block";
-        document.getElementById(loopItems[i] + 'Col').style.display = "block";
+        document.getElementById(this[loopItems[i]].picItem).style.display = "none";
+        document.getElementById(loopItems[i] + 'Col').style.display = "none";
       }
       this[loopItems[i]]=null;
     }
@@ -98,7 +94,6 @@ let wearing = {
   },
   createNeutralBase: function () {
     let iterator = 0;
-    
     console.log(this.bodyTemperature - defaultTemperature)
     while (
       iterator < 100 &&
@@ -271,7 +266,8 @@ let wearing = {
     return selectedItem;
   }},
   updateGUI : function (bodyPart,clothing) {
-    var li = document.getElementById(bodyPart).innerHTML = clothing;
+    document.getElementById(bodyPart).innerHTML = clothing;
+    document.getElementById(bodyPart).style.display = "block";
     var user = {
       head: wearing.head,
       neck: wearing.neck,
